@@ -1,7 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-
+import { GetPokemon } from './src/hooks/FetchPokemon';
 export default function App() {
+
+  async function response() {
+    await GetPokemon();
+  }
+
+  response();
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>

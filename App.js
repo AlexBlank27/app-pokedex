@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { GetPokemon } from './src/hooks/FetchPokemon';
+import { MainScreen } from './src/screens/MainScreen/MainScreen';
 export default function App() {
 
   async function response() {
@@ -9,10 +10,7 @@ export default function App() {
 
   response();
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <MainScreen></MainScreen>
   );
 }
 

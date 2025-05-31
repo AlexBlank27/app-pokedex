@@ -1,22 +1,18 @@
-import { View, TouchableOpacity, StyleSheet, StatusBar, Text, ActivityIndicator,Image,TextInput } from "react-native";
 import { useState } from "react";
+import { View, TouchableOpacity, StyleSheet, StatusBar, Text, ActivityIndicator, Image, TextInput } from "react-native";
 import { CustomTouchable } from "../../components/CustomTouchable/customTouchable";
-
+import { CustomSearchBar } from "../../searchBar/searchBarComponents";
 export const MainScreen = () => {
+    const [pokemonName, setPokemonName] = useState('');
 
-   
-    
     return (
-       <View style={styles.container}>
-            <Image style={styles.backgroundimage} source={require('../../../assets/pokemonfondo.jpg')}/>
-            <Image style={styles.backgroundimage2} source={require('../../../assets/pokedex.png')}/>
-            <TextInput
-            placeholder="Ingresa el nombre del Pokemon"
-            style={styles.input}
-            />
+        <View style={styles.container}>
+            <Image style={styles.backgroundimage} source={require('../../../assets/pokemonfondo.jpg')} />
+            <Image style={styles.backgroundimage2} source={require('../../../assets/pokedex.png')} />
+            <CustomSearchBar value={pokemonName} onChangeText={setPokemonName} />
         </View>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -39,19 +35,4 @@ const styles = StyleSheet.create({
         top: 80,
         left: 'auto',
     },
-    input: {
-        borderWidth: 1,
-        borderColor: 'gray',
-        padding: 10,
-        paddingStart: 30,
-        width: '80%',
-        height: 50,
-        marginTop: 20,
-        borderRadius: 30,
-        backgroundColor: 'white',
-        position: 'absolute',
-        top: 180,
-        left: 'auto',
-    },
-})
-
+});

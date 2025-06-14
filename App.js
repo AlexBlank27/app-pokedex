@@ -35,12 +35,22 @@ export default function App() {
   if (!appIsReady) {
     return null;
   }
+  // return (
+  //   <><View
+  //     style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+  //     onLayout={onLayoutRootView}>
+  //     <Text>SplashScreen Demo! 👋</Text>
+  //   </View></>
+  // );
+
 
 
   return (
     <MainScreen></MainScreen>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {

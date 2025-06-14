@@ -38,7 +38,9 @@ export default function App() {
 
 
   return (
-    <MainScreen></MainScreen>
+    <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+      <MainScreen />
+    </View>
   );
 }
 

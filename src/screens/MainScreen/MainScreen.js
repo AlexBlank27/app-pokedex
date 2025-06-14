@@ -14,13 +14,22 @@ export const MainScreen = () => {
     const [pkHability, setHability] = useState([]);
     const [pkPic, setPkPic] = useState('');
     const [habilityInfo, sethabilityInfo] = useState('');
+    const [isError, setIsError] = useState(false);
 
     const fetchPokemon = async () => {
         try {
             const data = await GetPokemon(pokemonName);
             if (!data) {
                 console.log('No se encontró el Pokémon');
-                return;
+                setIsError(true);
+                //     return;
+            } else if (data) {
+
+                setIsError(false);
+                console.log('data info:', data.game_index);
+
+
+
             }
             console.log('data:', data);
             setName(data.species.name);
@@ -56,8 +65,9 @@ export const MainScreen = () => {
                 console.log('Descripción: ', descripcion.flavor_text);
                 sethabilityInfo(descripcion.flavor_text);
             }
-
+            console.log('DATA: ', data);
         } catch (error) {
+            setIsError(true);
             console.error('Error al obtener datos del Pokémon:', error);
         }
     };
@@ -88,7 +98,16 @@ export const MainScreen = () => {
 
     //const weakness = data. 
 
-
+    // if (isError) {
+    //     return (
+    //         <View style={styles.container}>
+    //             <Text style={{ color: 'red', fontSize: 20 }}>Pokémon no encontrado</Text>
+    //             <TouchableOpacity onPress={() => setIsError(false)}>
+    //                 <Text>Volver</Text>
+    //             </TouchableOpacity>
+    //         </View>
+    //     );
+    // }
 
     return (
         <View style={styles.container}>
@@ -99,18 +118,27 @@ export const MainScreen = () => {
             <CustomSearchBar value={pokemonName} onChangeText={setPokemonName} />
 
 
-            <View style={{ marginBottom: 20, marginTop: '40%', }}>
-                <TouchableOpacity onPress={() => fetchPokemon()} style={{ backgroundColor: 'gray', padding: 10, borderRadius: 15, alignItems: 'center', width: '80%' }}>
+            <View style={{ marginBottom: 20, marginTop: '50%', }}>
+                <TouchableOpacity onPress={() => fetchPokemon()} style={{ backgroundColor: 'gray', padding: 10, borderRadius: 15,border: 2, alignItems: 'center', width: '80%' }}>
                     <Text>Buscar</Text>
                 </TouchableOpacity>
             </View>
             <View style={{ marginTop: '50px' }}>
-                <PokemonCard name={name}
+                {isError ? <View style={styles.cardError}>
+                    <Text style={{ color: 'red', fontSize: 20 }}>Pokémon no encontrado</Text>
+                    <Image source={require('../../../assets/Daco_5005608.png')} style={{ width: 120, height: 100 }} />
+                    <Text style={{ color: 'black', fontSize: 16 }}>Intenta con otro nombre</Text>
+                    {/* <TouchableOpacity onPress={() => setIsError(false)}>
+                        <Text>Volver</Text>
+                    </TouchableOpacity> */}
+                </View> : <><PokemonCard name={name}
                     pkHability={pkHability}
                     pkPic={pkPic}
                     habilityInfo={habilityInfo}
-                />
+                /></>}
+
             </View>
+
         </View>
 
     );
@@ -138,5 +166,14 @@ const styles = StyleSheet.create({
         top: 80,
         left: 'auto',
 
+    },
+    cardError: {
+        backgroundColor: 'withe',
+        padding: 20,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'right',
+        width: '80%',
+        marginTop: 20,
     },
 });

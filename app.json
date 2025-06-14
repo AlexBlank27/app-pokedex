@@ -7,9 +7,16 @@
     "icon": "./assets/Icono2.png",
     "userInterfaceStyle": "dark",
     "newArchEnabled": true,
-
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.anonymous.myapp"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7de78000-82ac-4d5b-9fa1-5d824fbf0bbf"
+      }
     }
   }
 }

@@ -1,6 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { GetPokemon } from './src/hooks/FetchPokemon';
 import { MainScreen } from './src/screens/MainScreen/MainScreen';
 import * as SplashScreen from 'expo-splash-screen';
 import { useState, useEffect, useCallback } from 'react';
@@ -45,12 +44,13 @@ export default function App() {
   );
 }
 
-async function response() {
-  await GetPokemon();
+
+
+
+  return (
+    <MainScreen></MainScreen>
+  );
 }
-
-response();
-
 
 const styles = StyleSheet.create({
   container: {

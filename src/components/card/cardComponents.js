@@ -6,13 +6,13 @@ import { GetPokemon } from "../../hooks/FetchPokemon";
 
 
 export const PokemonCard = ({ name, pkHability, pkPic, description, habilityInfo }) => {
-    console.log('desde card', pkHability)
+    console.log('desde card', pkHability, name)
     return (
         <View style={styles.card}>
             <View style={styles.header}>
                 <View>
                     <Text style={styles.name}>{name}</Text>
-                    <Text style={styles.evolution}>Evolves from </Text>
+                    <Text style={styles.evolution}>Evolves from *** </Text>
                 </View>
                 <Text style={styles.hp}>HP ###</Text>
             </View>

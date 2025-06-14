@@ -35,15 +35,13 @@ export default function App() {
   if (!appIsReady) {
     return null;
   }
-  return (
-    <><View
-      style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
-      onLayout={onLayoutRootView}>
-      <Text>SplashScreen Demo! 👋</Text>
-    </View></>
-  );
-}
-
+  // return (
+  //   <><View
+  //     style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+  //     onLayout={onLayoutRootView}>
+  //     <Text>SplashScreen Demo! 👋</Text>
+  //   </View></>
+  // );
 
 
 
@@ -51,6 +49,8 @@ export default function App() {
     <MainScreen></MainScreen>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
